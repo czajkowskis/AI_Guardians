@@ -1,8 +1,8 @@
 # TODO 
 
 # John 
-1. Fill stock images
-2. Fix questions corrections
+1. ~Fill stock images~
+2. ~Fix questions corrections~
 3. Save results
 
 4. # Szymon
