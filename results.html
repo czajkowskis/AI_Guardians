@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      text-align: center;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      background-color: #fff;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background-color: #ffd700;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Results</h1>
+    <p id="results"></p>
+    <button class="btn" onclick="restart()">Restart</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const correct = params.get('correct');
+    const wrong = params.get('wrong');
+    document.getElementById('results').textContent = `You got ${correct} correct and ${wrong} wrong.`;
+
+    function restart() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

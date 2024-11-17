@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      text-align: center;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      background-color: #fff;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .category {
+      font-size: 1rem;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .btn-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .btn {
+      background-color: #ffd700;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="category" id="category"></div>
+    <img id="test-image" src="https://via.placeholder.com/600x400" alt="Test Image">
+    <div class="btn-container">
+      <button class="btn" onclick="selectAnswer('real')">Real</button>
+      <button class="btn" onclick="selectAnswer('fake')">Fake</button>
+    </div>
+    <p id="feedback"></p>
+  </div>
+
+  <script>
+    const categories = ['Cats', 'Frogs', 'Cars'];
+    const images = {
+      Cats: ['cat1.jpg', 'cat2.jpg', 'cat3.jpg', 'cat4.jpg', 'cat5.jpg'],
+      Frogs: ['frog1.jpg', 'frog2.jpg', 'frog3.jpg', 'frog4.jpg', 'frog5.jpg'],
+      Cars: ['car1.jpg', 'car2.jpg', 'car3.jpg', 'car4.jpg', 'car5.jpg']
+    };
+    let categoryIndex = 0;
+    let imageIndex = 0;
+    let score = { correct: 0, wrong: 0 };
+
+    function loadCategory() {
+      document.getElementById('category').textContent = `Category: ${categories[categoryIndex]}`;
+      document.getElementById('test-image').src = images[categories[categoryIndex]][imageIndex];
+    }
+
+    function selectAnswer(answer) {
+      const isCorrect = Math.random() > 0.5; // Mock correctness for now
+      document.getElementById('feedback').textContent = isCorrect ? 'Correct!' : 'Wrong!';
+      score[isCorrect ? 'correct' : 'wrong']++;
+      nextImage();
+    }
+
+    function nextImage() {
+      if (imageIndex < 4) {
+        imageIndex++;
+      } else if (categoryIndex < 2) {
+        categoryIndex++;
+        imageIndex = 0;
+      } else {
+        showResults();
+        return;
+      }
+      loadCategory();
+    }
+
+    function showResults() {
+      window.location.href = `results.html?correct=${score.correct}&wrong=${score.wrong}`;
+    }
+
+    loadCategory();
+  </script>
+</body>
+</html>
