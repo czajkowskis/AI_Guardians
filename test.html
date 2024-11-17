@@ -67,13 +67,20 @@
   <script>
     const categories = ['Cats', 'Frogs', 'Cars'];
     const images = {
-      Cats: ['cat1.jpg', 'cat2.jpg', 'cat3.jpg', 'cat4.jpg', 'cat5.jpg'],
+      Cats: ['cat1.jpeg', 'cat2.jpeg', 'cat3.jpg', 'cat4.jpg', 'cat5.jpg'],
       Frogs: ['frog1.jpg', 'frog2.jpg', 'frog3.jpg', 'frog4.jpg', 'frog5.jpg'],
       Cars: ['car1.jpg', 'car2.jpg', 'car3.jpg', 'car4.jpg', 'car5.jpg']
     };
+
+    const correctAnswers = {
+      Cats: [true, true, true, true, true],
+      Frogs: [true, true, true, true, true],
+      Cars: [true, true, true, true, true]
+    };
+
     let categoryIndex = 0;
     let imageIndex = 0;
-    let score = { correct: 0, wrong: 0 };
+    let results = []; // Array to store the results
 
     function loadCategory() {
       document.getElementById('category').textContent = `Category: ${categories[categoryIndex]}`;
@@ -81,27 +88,60 @@
     }
 
     function selectAnswer(answer) {
-      const isCorrect = Math.random() > 0.5; // Mock correctness for now
+      const currentCategory = categories[categoryIndex];
+      const isCorrect = correctAnswers[currentCategory][imageIndex] === (answer === 'real');
+      results.push({
+        category: currentCategory,
+        image: images[currentCategory][imageIndex],
+        userAnswer: answer,
+        correctAnswer: correctAnswers[currentCategory][imageIndex] ? 'real' : 'fake',
+        result: isCorrect ? 1 : 0
+      });
+
       document.getElementById('feedback').textContent = isCorrect ? 'Correct!' : 'Wrong!';
-      score[isCorrect ? 'correct' : 'wrong']++;
-      nextImage();
+      setTimeout(nextImage, 1000); // Move to the next image after feedback
     }
 
     function nextImage() {
-      if (imageIndex < 4) {
+      if (imageIndex < images[categories[categoryIndex]].length - 1) {
         imageIndex++;
-      } else if (categoryIndex < 2) {
+      } else if (categoryIndex < categories.length - 1) {
         categoryIndex++;
         imageIndex = 0;
       } else {
-        showResults();
+        saveResultsToCSV();
         return;
       }
+      document.getElementById('feedback').textContent = ''; // Clear feedback
       loadCategory();
     }
 
-    function showResults() {
-      window.location.href = `results.html?correct=${score.correct}&wrong=${score.wrong}`;
+    function saveResultsToCSV() {
+      let csvContent = "data:text/csv;charset=utf-8,Category,Image,UserAnswer,CorrectAnswer,Result\n";
+      results.forEach(row => {
+        csvContent += `${row.category},${row.image},${row.userAnswer},${row.correctAnswer},${row.result}\n`;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "test_results.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      const fs = require('fs')
+
+// Data which will write in a file.
+let data = "Hello world."
+
+// Write data in 'Hello.txt' .
+fs.writeFile('Hello.txt', data, (err) => {
+
+    // In case of a error throw err.
+    if (err) throw err;
+})
+
+      alert("Results saved!"); // Inform the user that results are saved
     }
 
     loadCategory();
