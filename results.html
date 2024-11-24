@@ -68,7 +68,7 @@
       background-color: #FFEE8C;
       width: 100px;
       height: 100px;
-      border: None;
+      border: none;
       border-radius: 50%;
       font-size: 64px;
       cursor: pointer;
@@ -99,6 +99,7 @@
       margin-top: 20px;
       border: 2px solid #ddd;
       border-radius: 10px;
+      object-fit: contain;
     }
 
     .real-tag {
@@ -120,9 +121,7 @@
         <button class="btn" onclick="previousSlide()"><i class="fa-solid fa-arrow-left"></i></button>
       </div>
       <div class="middle-container">
-        <div class="slide-content" id="slide-content">
-          <p id="results"></p>
-        </div>
+        <div class="slide-content" id="slide-content"></div>
       </div>
       <div class="right-container">
         <button class="btn" onclick="nextSlide()"><i class="fa-solid fa-arrow-right"></i></button>
@@ -131,80 +130,60 @@
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const correct = params.get('correct');
-    const wrong = params.get('wrong');
-    document.getElementById('results').textContent = `You got ${correct} correct and ${wrong} wrong.`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const correctCount = urlParams.get('correct') || 0;
+    const wrongCount = urlParams.get('wrong') || 0;
 
-    let slidesData = {
-      "slides": [
-        {
-          "title": "What's Next?",
-          "paragraphs": [
-            "You've completed the quiz! But your journey doesn't end here.",
-            "Ready to dive deeper into identifying AI-generated images?"
-          ]
-        },
-        {
-          "title": "Learn More",
-          "paragraphs": [
-            "Visit our website for resources and tips on spotting AI-generated content.",
-            "Join our community of digital detectives and improve your skills!"
-          ]
-        },
-        {
-          "title": "Image 1",
-          "image": "./assets/img/test1.jpg",
-          "realTag": "Real image"
-        },
-        {
-          "title": "Image 2",
-          "image": "https://via.placeholder.com/400x300.png?text=Real+Image",
-          "realTag": "dfgdgfd"
-        },
-        {
-          "title": "Image 3",
-          "image": "https://via.placeholder.com/400x300.png?text=AI+Generated+Image",
-          "realTag": "AI Generated"
-        }
-      ]
+    const summarySlide = {
+      category: "Summary",
+      photo: "",
+      answer: `Correct: ${correctCount}, Wrong: ${wrongCount}`
     };
+
+    const quizData = [
+      summarySlide,
+      { photo: "./assets/img/ai (1).jpeg", category: "Cats", answer: "AI" },
+      { photo: "./assets/img/real (2).jpg", category: "Cats", answer: "Real" },
+      { photo: "./assets/img/real (4).jpg", category: "Cats", answer: "Real" },
+      { photo: "./assets/img/ai (5).jpeg", category: "Cats", answer: "AI" },
+      { photo: "./assets/img/ai (6).jpeg", category: "Cats", answer: "AI" },
+      { photo: "./assets/img/real (1).jpg", category: "Cats", answer: "Real" },
+      { photo: "./assets/img/ai (1).jpg", category: "Nature", answer: "AI" },
+      { photo: "./assets/img/ai (2).jpeg", category: "Flowers", answer: "AI" },
+      { photo: "./assets/img/ai (3).jpeg", category: "Flowers", answer: "AI" },
+      { photo: "./assets/img/ai (4).jpeg", category: "Flowers", answer: "AI" },
+      { photo: "./assets/img/real (3).jpg", category: "Flowers", answer: "Real" },
+      { photo: "./assets/img/ai (1).jfif", category: "Nature", answer: "AI" },
+      { photo: "./assets/img/ai (2).jpg", category: "Nature", answer: "AI" },
+      { photo: "./assets/img/ai (7).jpeg", category: "People", answer: "AI" },
+      { photo: "./assets/img/real.jpg", category: "Nature", answer: "Real" }
+    ];
 
     let currentSlide = 0;
 
     function updateSlide() {
-      const slide = slidesData.slides[currentSlide];
-      document.getElementById('slide-title').textContent = slide.title;
-      const slideContent = document.getElementById('slide-content');
-      slideContent.innerHTML = ''; // Clear previous content
+      const slideContent = document.getElementById("slide-content");
+      slideContent.innerHTML = "";
 
-      // Add paragraphs if available
-      if (slide.paragraphs) {
-        slide.paragraphs.forEach(paragraph => {
-          const p = document.createElement('p');
-          p.innerHTML = paragraph;
-          slideContent.appendChild(p);
-        });
+      const slide = quizData[currentSlide];
+      const title = document.createElement("h1");
+      title.textContent = slide.category;
+      slideContent.appendChild(title);
+
+      if (slide.photo) {
+        const image = document.createElement("img");
+        image.src = slide.photo;
+        slideContent.appendChild(image);
       }
 
-      // Add image if available
-      if (slide.image) {
-        const img = document.createElement('img');
-        img.src = slide.image;
-        slideContent.appendChild(img);
-      }
-
-      // Add real/fake tag if available
-      if (slide.realTag) {
-        const tag = document.createElement('p');
-        tag.textContent = slide.realTag;
-        tag.className = 'real-tag';
-        slideContent.appendChild(tag);
-      }
+      const tag = document.createElement("p");
+      tag.textContent = slide.answer;
+      tag.className = "real-tag";
+      slideContent.appendChild(tag);
     }
 
     function nextSlide() {
-      if (currentSlide < slidesData.slides.length - 1) {
+      if (currentSlide < quizData.length - 1) {
         currentSlide++;
         updateSlide();
       }
