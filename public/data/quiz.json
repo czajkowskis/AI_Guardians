@@ -1,0 +1,19 @@
+ {
+  "questions": [
+    { "photo_src": "/images/ai (1).jpeg", "category": "Test Category 1", "answer": false },
+    { "photo_src": "/images/real (2).jpg", "category": "Test Category 2", "answer": true },
+    { "photo_src": "/images/real (4).jpg", "category": "Test Category 2", "answer": true },
+    { "photo_src": "/images/ai (5).jpeg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/ai (6).jpeg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/real (1).jpg", "category": "Test Category 2", "answer": true },
+    { "photo_src": "/images/ai (1).jpg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/ai (2).jpeg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/ai (3).jpeg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/ai (4).jpeg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/real (3).jpg", "category": "Test Category 2", "answer": true },
+    { "photo_src": "/images/ai (1).jfif", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/ai (2).jpg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/ai (7).jpeg", "category": "Test Category 2", "answer": false },
+    { "photo_src": "/images/real.jpg", "category": "Test Category 2", "answer": true }
+  ]
+}
