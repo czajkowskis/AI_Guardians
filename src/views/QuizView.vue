@@ -1,12 +1,21 @@
 <script> 
+  import FeedbackCard from '../components/FeedbackCard.vue'
+  import ExplanationCard from '../components/ExplanationCard.vue'
   export default {
+    components: {
+      FeedbackCard,
+      ExplanationCard,
+    },
     data() {
       return {
         questions: [],
         results: [],
-        feedback: "",
+        userAnswers: [],
         fetched: false,
-        currentIndex: 0
+        currentIndex: 0,
+        feedbackVisible: false,
+        explanationVisible: false,
+        lastAnswerCorrect: false,
       };
     },
     computed: {
@@ -37,10 +46,12 @@
         if (this.currentIndex < this.questions.length) {
           this.currentIndex++;
         }
+        this.explanationVisible = false;
       },
       
       selectAnswer(answer) {
         const isCorrect = this.currentQuestion.answer === answer;
+        this.lastAnswerCorrect = isCorrect;
         this.results.push({
           category: this.currentQuestion.category,
           image: this.currentQuestion.photo,
@@ -48,28 +59,20 @@
           correctAnswer: this.currentQuestion.answer,
           result: isCorrect ? 1 : 0
         });
+        this.userAnswers.push(answer);
+        this.feedbackVisible = true; // Show feedback card
+        setTimeout(() => {
+          this.explanationVisible = true;
+        }, 800)
+        setTimeout(() => {
+          this.feedbackVisible = false;
+        }, 5000)
+      },
 
-        if (isCorrect){
-          this.feedback = "Correct!"
-        }
-
-        else{
-          this.feedback = "Wrong!"
-        }
-      // Add shake class for animation
-      const feedback_box = document.getElementById("feedback-box")
-      feedback_box.classList.add('shake');
-
-      // Remove the shake class after animation ends
-      setTimeout(() => {
-        feedback_box.classList.remove('shake');
-      }, 500);
-
-      setTimeout(() => {
-        this.currentIndex++;
-      }, 1000);
-
-      }
+      /* goToSummary(){
+        localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers)); // Save answers to LocalStorage
+        this.$router.push({ name: 'Summary'});
+      } */
      },
 
     mounted() {
@@ -87,7 +90,22 @@
       <button class="btn btn-false" @click="selectAnswer(false)"><i class="fa-solid fa-xmark"></i>Generated</button>
       <button class="btn btn-true" @click="selectAnswer(true)"><i class="fa-solid fa-check"></i>Real</button>
     </div>
-    <p id="feedback-box">{{this.feedback}}</p>
+    <transition name="rotation">
+      <FeedbackCard
+        v-if="feedbackVisible"
+        :correct="lastAnswerCorrect"
+      />
+    </transition>
+    
+    <transition name="slide">
+      <ExplanationCard
+          v-if="explanationVisible"
+          :questionIndex="currentIndex"
+          :quizFinished="finished"
+          @next="nextQuestion"
+          @finish="goToSummary"
+      />
+    </transition>
   </div>
 </template>
 
@@ -113,6 +131,8 @@
     background-color: #fff;
     width: 80%;
     height: 80vh;
+    overflow: hidden;
+    z-index: 10;
   }
 
   .image-container {
@@ -121,9 +141,6 @@
     align-items: center;
     width: 100%;
     height: 60%;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
   }
 
   img {
@@ -176,32 +193,42 @@
     cursor: pointer;
   }
 
-  #feedback-box {
-    font-family: "Poppins", sans-serif;
-    font-size: 24px;
-    color: #000;
-    margin-top: 20px;
-    font-weight: bold;
-    display: inline-block;
+  /* Animations */
+  .rotation-enter-active,
+  .rotation-leave-active {
+    transition: all 1s ease-in-out;
   }
 
-  /* Shake animation */
-  @keyframes shake {
-    0%, 100% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-5px);
-    }
-    50% {
-      transform: translateX(5px);
-    }
-    75% {
-      transform: translateX(-5px);
-    }
+  /* Initial state when entering */
+  .rotation-enter-from {
+    transform: rotate(90deg);
   }
 
-  .shake {
-    animation: shake 0.5s ease;
+  /* Final state after entering */
+  .rotation-enter-to {
+    transform: rotate(0deg);
+  }
+
+  /* Initial state when leaving */
+  .rotation-leave {
+    transform: rotate(0deg);
+  }
+
+  /* Final state after leaving */
+  .rotation-leave-to {
+    transform: rotate(90deg);
+  }
+
+  .slide-enter-from{
+    transform: translateX(0px);
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: all 1s ease-in-out;
+  }
+
+  .slide-leave-to{
+    transform: translateX(100%)
   }
 </style>
