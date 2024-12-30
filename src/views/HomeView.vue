@@ -1,8 +1,8 @@
 <script> 
   export default {
     methods: {
-      goToQuiz() {
-        this.$router.push({ name: 'Quiz'});
+      goToSlides() {
+        this.$router.push({ name: 'Presentation'});
       }
     },
 
@@ -12,8 +12,8 @@
 <template>
   <div class="card">
     <div class="content-container">
-      <h1>Are you ready?</h1>
-      <button class="start-btn" @click="goToQuiz">Let's go!</button>
+      <h1>CAN YOU TRUST YOUR EYES?</h1>
+      <button class="start-btn" @click="goToSlides">START</button>
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@
     background-color: #fff;
     width: 80%;
     height: 80vh;
-    z-index: 15;
+    z-index: 30;
   }
 
 
