@@ -41,8 +41,8 @@
         }
       },
 
-      goToQuiz() {
-        this.$router.push({ name: 'Quiz'});
+      goToReady() {
+        this.$router.push({ name: 'Ready'});
       }
     },
 
@@ -68,7 +68,7 @@
       </div>
       <div class="right-container">
         <button v-if="finished === false" class="btn" @click="nextSlide()"><i class="fa-solid fa-arrow-right"></i></button>
-        <button v-else class="btn" @click="goToQuiz()"><i class="fa-solid fa-arrow-right"></i></button>
+        <button v-else class="btn" @click="goToReady()"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
   </div>
@@ -91,6 +91,7 @@
     background-color: #fff;
     width: 80%;
     height: 80vh;
+    z-index: 20;
   }
 
   .top-container {
@@ -136,6 +137,7 @@
 
   .btn {
     background-color: #FFEE8C;
+    color: #000;
     width: 100px;
     height: 100px;
     border: None;
