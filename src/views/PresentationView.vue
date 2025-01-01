@@ -98,7 +98,9 @@
     background: #FFEE8C;
     width: 35%;
     padding: 0 20px;
-    border: 2px solid #000;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 10px 0 0 0;
   }
 
   .bottom-container {
