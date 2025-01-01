@@ -11,6 +11,7 @@
         questions: [],
         results: [],
         userAnswers: [],
+        correctAnswers: 0,
         fetched: false,
         currentIndex: 0,
         feedbackVisible: false,
@@ -51,6 +52,9 @@
       
       selectAnswer(answer) {
         const isCorrect = this.currentQuestion.answer === answer;
+        if(isCorrect){
+          this.correctAnswers++;
+        }
         this.lastAnswerCorrect = isCorrect;
         this.results.push({
           category: this.currentQuestion.category,
@@ -66,13 +70,14 @@
         }, 800)
         setTimeout(() => {
           this.feedbackVisible = false;
-        }, 5000)
+        }, 500)
       },
 
-      /* goToSummary(){
-        localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers)); // Save answers to LocalStorage
-        this.$router.push({ name: 'Summary'});
-      } */
+      goToResults(){
+        localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
+        localStorage.setItem('userResult', this.correctAnswers);
+        this.$router.push({ name:'Results'});
+      }, 
      },
 
     mounted() {
@@ -103,7 +108,7 @@
           :questionIndex="currentIndex"
           :quizFinished="finished"
           @next="nextQuestion"
-          @finish="goToSummary"
+          @finish="goToResults"
       />
     </transition>
   </div>
