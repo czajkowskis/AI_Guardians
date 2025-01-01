@@ -63,14 +63,14 @@
           correctAnswer: this.currentQuestion.answer,
           result: isCorrect ? 1 : 0
         });
-        this.userAnswers.push(answer);
+        this.userAnswers.push(isCorrect);
         this.feedbackVisible = true; // Show feedback card
         setTimeout(() => {
           this.explanationVisible = true;
         }, 800)
         setTimeout(() => {
           this.feedbackVisible = false;
-        }, 500)
+        }, 5000)
       },
 
       goToResults(){
