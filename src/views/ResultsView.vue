@@ -42,19 +42,19 @@
   <div class="card">
     <div class="content-container">
       <transition name="slide">
-        <PresentationCard style="z-index: 3;" v-if="currentIndex==0" 
+        <PresentationCard style="z-index: 70;" v-if="currentIndex==0" 
                           message="It seems that’s all!"
                           @proceed="proceed"/>
       </transition>
 
       <transition name="slide">
-        <PresentationCard style="z-index: 2;" v-if="currentIndex==1" 
+        <PresentationCard style="z-index: 69;" v-if="currentIndex==1" 
                           message="Let’s see how good you did!"
                           @proceed="proceed"/>
       </transition>
 
       <transition name="slide">
-        <ResultsCard style="z-index: 1;" v-if="currentIndex==2" 
+        <ResultsCard style="z-index: 68;" v-if="currentIndex==2" 
                           :score="userResult"
                           :questionsAmount="userAnswers.length"
                           @proceed="goToSummary"/>
@@ -82,7 +82,7 @@
     width: 80%;
     height: 80vh;
     overflow: hidden;
-    z-index: 10;
+    z-index: 70;
   }
 
   /* Animations */

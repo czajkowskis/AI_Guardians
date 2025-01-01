@@ -37,7 +37,7 @@
     background-color: #fff;
     width: 80%;
     height: 80vh;
-    z-index: 30;
+    z-index: 100;
   }
 
 

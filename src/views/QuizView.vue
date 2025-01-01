@@ -137,7 +137,7 @@
     width: 80%;
     height: 80vh;
     overflow: hidden;
-    z-index: 10;
+    z-index: 80;
   }
 
   .image-container {

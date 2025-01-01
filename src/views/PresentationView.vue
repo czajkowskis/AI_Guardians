@@ -91,7 +91,7 @@
     background-color: #fff;
     width: 80%;
     height: 80vh;
-    z-index: 20;
+    z-index: 90;
   }
 
   .top-container {
