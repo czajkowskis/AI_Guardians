@@ -88,11 +88,13 @@
 
 <template>
  <div class="card">
+    <div class="left-container">
+      <button class="btn btn-false" @click="selectAnswer(false)"><i class="fa-solid fa-xmark"></i>Generated</button>
+    </div>
     <div class="image-container">
       <img v-if="fetched" :src="this.currentQuestion.photo_src" alt="Test Image">
     </div>
-    <div class="btn-container">
-      <button class="btn btn-false" @click="selectAnswer(false)"><i class="fa-solid fa-xmark"></i>Generated</button>
+    <div class="right-container">
       <button class="btn btn-true" @click="selectAnswer(true)"><i class="fa-solid fa-check"></i>Real</button>
     </div>
     <transition name="rotation">
@@ -121,8 +123,8 @@
 
   .card {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: auto;
     position: absolute;
     top: 0;
@@ -140,6 +142,14 @@
     z-index: 80;
   }
 
+  .left-container, .right-container {
+    width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .image-container {
     display: flex;
     justify-content: center;
@@ -149,23 +159,13 @@
   }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 450px;
     object-fit: contain;
   }
 
-  .btn-container {
-    margin: auto;
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 50%;
-  }
 
   .btn {
-    min-width: 200px;
+    width: 300px; 
     padding: 20px;
     margin: 40px;
     font-family: "Poppins", sans-serif;
