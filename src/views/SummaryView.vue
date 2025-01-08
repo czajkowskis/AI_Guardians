@@ -22,7 +22,7 @@
       },
 
       isAnswerCorrect() {
-        return this.userAnswers[this.currentIndex];
+        return this.userAnswers[this.currentIndex].is_correct;
       },
 
       finished() {
@@ -71,22 +71,31 @@
 
 <template>
   <div class="card">
-    <div class="top-container">
-      <h1 id="slide-title">Results</h1>
-    </div>
-    <div class="bottom-container">
+    <div class="container">
       <div class="left-container">
         <button class="btn" @click="previousSlide()"><i class="fa-solid fa-arrow-left"></i></button>
       </div>
-      <div class="middle-container">
+      <div class="middle-left-container">
         <div class="feedback-box">
-          <h1 v-if="isAnswerCorrect" class="correct">Correct <i class="fa-solid fa-circle-check"></i></h1>
-          <h1 v-else class="incorrect"> Wrong <i class="fa-solid fa-circle-xmark"></i></h1>
+          <h1>You're answer was:</h1>
+          <div class="feedback-message-container">
+            <h2>{{this.userAnswers[this.currentIndex].text}}</h2>
+            <div v-if="isAnswerCorrect" class="correct-box">
+              <h1 class="correct"> Correct </h1>
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div v-else class="incorrect-box">
+              <h1 class="incorrect"> Wrong </h1>
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+          </div>
         </div>
+        <button class="rectangular-button" @click="viewExplanation">View Explanation</button>
+      </div>
+      <div class="middle-right-container">
         <div class="image-container">
           <img :src="this.currentQuestion.photo_src" alt="Image">
         </div>
-        <button class="rectangular-button" @click="viewExplanation">View Explanation</button>
       </div>
       <div class="right-container">
         <button class="btn" @click="nextSlide()"><i class="fa-solid fa-arrow-right"></i></button>
@@ -120,20 +129,11 @@
     background-color: #fff;
     width: 80%;
     height: 80vh;
-    overflow: hidden;
+    overflow:hidden;
     z-index: 60;
   }
 
-  .top-container {
-    background: #FFEE8C;
-    width: 35%;
-    padding: 0 20px;
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
-    z-index: 59;
-  }
-
-  .bottom-container {
+  .container {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -152,16 +152,28 @@
     padding: 0 50px;
   }
 
-  .middle-container {
+  .middle-left-container {
+    width: 40%;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
     height: 100%;
   }
 
-  .image-container {
-    height: 50%;
+  .middle-right-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
+
+  img {
+    width: 350px;
+  }
+
 
   .btn {
     background-color: #FFEE8C;
@@ -179,14 +191,14 @@
     background-color: #ffc107;
   }
 
-  .rectangular-button {
-    margin: 0 auto;
+  .rectangular-button { 
+    margin: 30px auto 0 auto;
     background: #FFEE8C;
     color: #000;
     border: 2px solid #000;
     padding: 20px 100px;
     font-family: "Poppins", sans-serif;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -199,36 +211,62 @@
   }
 
   .feedback-box {
+    width: 100%;
     margin: 0 auto;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-items: space-between;
   }
 
+  .feedback-message-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  div.correct-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.incorrect-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   h1 {
+    margin: 10px auto;
     font-size: 48px;
     color: #000;
   }
 
+  h2{
+    font-size: 36px;
+    color: #000;
+  }
+
   h1.correct {
-    font-size: 64px;
+    font-size: 36px;
     color: #39C670
   }
 
   h1.incorrect {
-    font-size: 64px;
+    font-size: 36px;
     color: #D14249;
   }
 
   .fa-circle-check {
-    font-size: 64px;
-    margin-left: 30px;
+    font-size: 48px;
+    margin-left: 15px;
     color: #39C670;
   }
 
   .fa-circle-xmark {
-    font-size: 64px;
-    margin-left: 30px;
+    font-size: 48px;
+    margin-left: 15px;
     color: #D14249;
   }
 

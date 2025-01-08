@@ -63,7 +63,8 @@
           correctAnswer: this.currentQuestion.answer,
           result: isCorrect ? 1 : 0
         });
-        this.userAnswers.push(isCorrect);
+        var answerObject = {text: isCorrect ? "Real" : "Generated", is_correct: isCorrect}
+        this.userAnswers.push(answerObject);
         this.feedbackVisible = true; // Show feedback card
         setTimeout(() => {
           this.explanationVisible = true;
