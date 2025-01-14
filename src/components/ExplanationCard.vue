@@ -10,7 +10,29 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      explanations: [],
+      fetched: false,
+    };
+  },
+
+  computed: {
+    currentQuestion() {
+      return this.explanations[this.questionIndex];
+    }
+  },
   methods: {
+    async fetchExplanations() {
+      try {
+        const response = await fetch("data/explanations.json");
+        const data = await response.json();
+        this.explanations = data.explanations;
+        this.fetched = true;
+      } catch (error) {
+        console.error("Error loading JSON:", error);
+      }
+    },
     next() {
       this.$emit("next"); // Notify the parent to move to the next question
     },
@@ -18,22 +40,38 @@ export default {
       this.$emit("finish");
     },
   },
+  mounted() {
+    this.fetchExplanations();
+    console.log(this.explanations)
+  }
 };
 </script>
 
 <template>
   <div class="explanation-card">
-    <h1>Explanation goes here</h1>
-    <button v-if="!quizFinished" @click="next">Next Question</button>
-    <button v-else @click="finish">Finish the Quiz</button>
+    <div class="top-container">
+      <div class="middle-left-container">
+        <div class="image-container">
+          <img v-if="fetched" :src="currentQuestion.photo_src" alt="Image">
+        </div>
+      </div>
+      <div v-if="fetched" class="top-right-container">
+        <p v-for="(paragraph, index) in currentQuestion.explanation_paragraphs" :key="index" >{{paragraph}}</p>
+      </div>
+    </div>
+    <div class="bottom-container">
+      <button v-if="!quizFinished" class="rectangular-button" @click="this.next()">Next Question</button>
+      <button v-else class="rectangular-button" @click="this.finish()">Finish the Quiz</button>
+    </div>
   </div>
+  
 </template>
 
 <style scoped>
 .explanation-card {
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
   position: absolute;
   top: 0;
@@ -47,8 +85,33 @@ export default {
   z-index: 10;
 }
 
+.top-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.top-left-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 400px;
+}
+
+.top-right-container {
+  text-align: justify;
+  width: 40%;
+  padding: 50px;
+  color: black;
+  font-family: "Poppins";
+  font-size: 24px;
+  font-weight: 500;
+}
+
 button {
-  max-width: 50%;
   background: #FFEE8C;
   color: #000;
   border: 2px solid #000;
