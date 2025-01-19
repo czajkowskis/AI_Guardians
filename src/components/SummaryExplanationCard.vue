@@ -83,6 +83,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 90%;
   margin-bottom: 70px;
 }
 
@@ -100,11 +101,12 @@ img {
 .right-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   text-align: justify;
-  width: 40%;
+  width: 50%;
   color: black;
   font-family: "Poppins";
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 500;
 }
 
