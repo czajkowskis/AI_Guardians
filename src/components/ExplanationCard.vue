@@ -50,7 +50,7 @@ export default {
 <template>
   <div class="explanation-card">
     <div class="top-container">
-      <div class="middle-left-container">
+      <div class="top-left-container">
         <div class="image-container">
           <img v-if="fetched" :src="currentQuestion.photo_src" alt="Image">
         </div>
@@ -89,6 +89,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 90%;
 }
 
 .top-left-container {
@@ -107,8 +108,9 @@ img {
   padding: 50px;
   color: black;
   font-family: "Poppins";
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 500;
+  width: 50%;
 }
 
 button {
