@@ -113,6 +113,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 90%;
 }
 
 .middle-left-container {
