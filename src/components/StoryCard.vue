@@ -93,7 +93,7 @@ export default {
 
 .top-container {
    display: flex;
-   justify-content: center;
+   justify-content: flex-start;
    align-items: center;
    width: 100%;
 }
@@ -106,7 +106,6 @@ export default {
   padding: 0 50px;
   border-right: 2px solid #000;
   border-bottom: 2px solid #000;
-  border-left: 2px solid #000;
 }
 
 .middle-container {
@@ -128,11 +127,11 @@ img {
 
 .middle-right-container {
   text-align: justify;
-  width: 40%;
+  width: 50%;
   padding: 50px;
   color: black;
   font-family: "Poppins";
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 500;
 }
 
