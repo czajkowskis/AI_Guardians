@@ -1,0 +1,96 @@
+ {
+  "explanations": [
+    { "photo_src": "/images/explanations/01_explanation.png",
+      "explanation_paragraphs": [
+        "1. Look at the fur — it’s too detailed and perfectly lit for a photo.",
+        "2. Notice the eyes — they’re vibrant, reflective, and overly dramatic.",
+        "3. Check paws and whiskers — AI often distorts or misplaces details."
+      ] },
+    { "photo_src": "/images/explanations/02_explanation.png",
+      "explanation_paragraphs": [
+        "1. Check the hands and book — the fingers don’t press the pages realistically, and the grip feels unnatural.",
+        "2. Look at the text on the book — it’s blurry, nonsensical, and lacks coherent structure, a clear sign of AI generation.",
+        "3. Examine the lighting — it’s overly perfect and cinematic, with an unnatural glow that doesn’t match real-life conditions."
+      ] 
+    },
+    { "photo_src": "/images/03_real.png",
+      "explanation_paragraphs": [
+        "Real images don't require explanations :)"
+      ] 
+    },
+    { "photo_src": "/images/explanations/04_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the eyes — they’re vibrant, symmetrical, and overly reflective, giving a dramatic AI look.",
+        "2. Look at the fur — it’s sharply detailed and uniform, unlike natural textures.",
+        "3. Check the paws and yarn — the contact may seem unrealistic, lacking weight or pressure."
+      ] 
+    },
+    { "photo_src": "/images/05_real.png",
+      "explanation_paragraphs": [
+        "Real images don't require explanations :)"
+      ] 
+    },
+    { "photo_src": "/images/06_real.png",
+      "explanation_paragraphs": [
+        "Real images don't require explanations :)"
+      ] 
+    },
+    { "photo_src": "/images/explanations/07_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the proportions — the muscles are overly exaggerated and unrealistic.",
+        "2. Check the clothing — it’s too smooth, lacking natural wrinkles or texture.",
+        "3. Look at the interaction — the hand placement and eye contact feel unnatural." 
+      ] 
+    },
+    { "photo_src": "/images/explanations/08_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the jersey text — it appears slightly blurry and inconsistent, a common AI artifact when rendering text.",
+        "2. Check the facial features — they may look overly smooth and lack the natural imperfections of real skin.",
+        "3. Look at the proportions — the body and limbs might appear slightly unnatural or exaggerated in size and pose."
+      ] 
+    },
+    { "photo_src": "/images/09_real.png",
+      "explanation_paragraphs": [
+        "Real images don't require explanations :)"
+      ] 
+    },
+    { "photo_src": "/images/explanations/10_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the hands — their positioning and anatomy may appear slightly off, with fingers that lack natural joint alignment or proportions.",
+        "2. Check the lighting — the sunset glow is overly dramatic and evenly distributed, creating an unrealistic cinematic effect.",
+        "3. Look at the background — objects like the lampposts and trees might lack depth or have minor inconsistencies in their structure."
+      ] 
+    },
+    { "photo_src": "/images/11_real.png",
+      "explanation_paragraphs": [
+        "Real images don't require explanations :)"
+      ] 
+    },
+    { "photo_src": "/images/explanations/12_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the face — it’s overly smooth and lacks the small imperfections typically seen in natural skin.",
+        "2. Check the text on signs — the protest signs may have blurry or nonsensical text, a common hallmark of AI-generated images.",
+        "3. Look at the crowd — the people in the background may have distorted or inconsistent facial features and lack realistic depth."
+      ] 
+    },
+    { "photo_src": "/images/13_real.png",
+      "explanation_paragraphs": [
+        "Real images don't require explanations :)"
+      ] 
+    },
+    { "photo_src": "/images/explanations/14_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the sand dunes — the patterns appear too uniform and perfect, lacking the natural randomness of wind-shaped sand.",
+        "2. Check the vehicles — they may lack realistic weight and interaction with the sand, such as proper tire imprints or dust dynamics.",
+        "3. Look for imperfections — notice the sand close to the car" 
+      ] 
+    },
+    { "photo_src": "/images/explanations/15_explanation.png",
+      "explanation_paragraphs": [
+        "1. Notice the children’s faces — some may appear overly smooth or have slight distortions, especially in the background.",
+        "2. Check the hands — the hands holding brushes may seem unrealistic or misshapen, a common issue in AI-generated images.",
+        "3. Look at the painting details — the brush strokes and colors may lack natural variation or appear artificially blended."
+      ] 
+    }
+  ]
+}
