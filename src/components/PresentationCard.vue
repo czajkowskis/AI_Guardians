@@ -42,15 +42,15 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 50px;
   background-color: #fff;
   width: 100%;
-  height: 80vh;
+  height: 100%;
 }
 
 .message-box {
