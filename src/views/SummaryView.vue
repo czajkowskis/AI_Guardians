@@ -53,6 +53,10 @@
         }
       },
 
+      goToAfterSummary() {
+        this.$router.push({ name: 'AfterSummary'});
+      },
+
       viewExplanation() {
         this.explanationVisible = true;
       },
@@ -98,7 +102,8 @@
         </div>
       </div>
       <div class="right-container">
-        <button class="btn" @click="nextSlide()"><i class="fa-solid fa-arrow-right"></i></button>
+        <button v-if="!finished" class="btn" @click="nextSlide()"><i class="fa-solid fa-arrow-right"></i></button>
+        <button v-else class="end-button" @click="goToAfterSummary">End</button>
       </div>
     </div>
     <transition name="rotation">
@@ -188,6 +193,23 @@
   }
 
   .btn:hover {
+    background-color: #ffc107;
+  }
+
+  .end-button {
+    background-color: #FFEE8C;
+    color: #000;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .end-button:hover {
     background-color: #ffc107;
   }
 
