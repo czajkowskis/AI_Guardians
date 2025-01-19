@@ -25,8 +25,6 @@ export default {
 
   methods: {
     proceed() {
-
-      console.log("Proceeded");
       this.$emit("proceed");     
     },
   },
