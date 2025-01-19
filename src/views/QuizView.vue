@@ -71,7 +71,7 @@
         }, 800)
         setTimeout(() => {
           this.feedbackVisible = false;
-        }, 5000)
+        }, 3000)
       },
 
       goToResults(){
