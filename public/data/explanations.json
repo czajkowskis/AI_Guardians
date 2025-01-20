@@ -68,7 +68,7 @@
     },
     { "photo_src": "/images/explanations/12_explanation.png",
       "explanation_paragraphs": [
-        "1. Check the signs — the text is often <strong>blurry and nonsensical</strong>, that's a common hallmark of AI-generated images.",
+        "1. Check the protest signs — the text is often <strong>blurry and nonsensical</strong>, that's a common hallmark of AI-generated images.",
         "2. Notice the face — it’s overly smooth and <strong>lacks the imperfections</strong> typically seen in natural skin.",
         "3. Look at the crowd — the people in the background may have <strong>distorted or inconsistent facial features</strong> and lack realistic depth."
       ] 
@@ -88,7 +88,7 @@
     { "photo_src": "/images/explanations/15_explanation.png",
       "explanation_paragraphs": [
         "1. Notice the children’s faces — some may appear overly smooth or have <strong>slight distortions, especially in the background.</strong>",
-        "2. Check the hands — some of them are <strong>missing</strong>, some may seem unrealistic or <strong>unaturally twisted</strong>, a common issue in AI-generated images."
+        "2. Check the hands — some of them are <strong>missing</strong>, some may seem unrealistic or <strong>unnaturally twisted</strong>, which is a common issue in AI-generated images."
       ] 
     }
   ]
