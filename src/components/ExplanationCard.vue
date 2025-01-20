@@ -57,11 +57,9 @@ export default {
       </div>
       <div v-if="fetched" class="top-right-container">
         <p v-for="(paragraph, index) in currentQuestion.explanation_paragraphs" :key="index" >{{paragraph}}</p>
+        <button v-if="!quizFinished" class="rectangular-button" @click="this.next()">Next Question</button>
+        <button v-else class="rectangular-button" @click="this.finish()">Finish the Quiz</button>
       </div>
-    </div>
-    <div class="bottom-container">
-      <button v-if="!quizFinished" class="rectangular-button" @click="this.next()">Next Question</button>
-      <button v-else class="rectangular-button" @click="this.finish()">Finish the Quiz</button>
     </div>
   </div>
   
@@ -103,6 +101,10 @@ img {
 }
 
 .top-right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   text-align: justify;
   width: 40%;
   padding: 50px;
@@ -118,6 +120,7 @@ button {
   color: #000;
   border: 2px solid #000;
   padding: 20px 100px;
+  margin-top: 20px;
   font-family: "Poppins", sans-serif;
   font-size: 32px;
   font-weight: bold;
