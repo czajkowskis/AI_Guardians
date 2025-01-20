@@ -58,7 +58,7 @@ export default {
 
 h1 {
   font-family: "Poppins";
-  font-size: 120px;
+  font-size: 100px;
   color: #000;
 }
 </style>
