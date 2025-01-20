@@ -43,6 +43,19 @@
           this.currentIndex = this.currentIndex - 1;
         }
       },
+
+      downloadPDF() {
+      // create element <a> for download PDF
+      const link = document.createElement('a');
+      link.href = "/documents/checklist.pdf";
+      link.target = '_blank';
+      link.download = "AI_Guardians_Checklist.pdf";
+
+      // Simulate a click on the element <a>
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      }
     },
 
     mounted() {
