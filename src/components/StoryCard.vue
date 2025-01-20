@@ -62,7 +62,7 @@ export default {
         </div>
       </div>
       <div v-if="fetched" class="middle-right-container">
-        <p v-for="(paragraph, index) in currentStory.paragraphs" :key="index" >{{paragraph}}</p>
+        <p v-for="(paragraph, index) in currentStory.paragraphs" :key="index" v-html="paragraph"></p>
       </div>
     </div>
     <div class="bottom-container">
