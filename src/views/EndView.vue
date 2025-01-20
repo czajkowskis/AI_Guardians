@@ -107,7 +107,7 @@
     width: 80%;
     height: 80vh;
     overflow:hidden;
-    z-index: 60;
+    z-index: 10;
   }
 
   .container {
