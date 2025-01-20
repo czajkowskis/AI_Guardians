@@ -139,6 +139,7 @@ button {
   background: #FFEE8C;
   color: #000;
   border: 2px solid #000;
+  margin-bottom: 20px;
   padding: 20px 100px;
   font-family: "Poppins", sans-serif;
   font-size: 32px;
