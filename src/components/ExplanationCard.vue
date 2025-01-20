@@ -56,7 +56,7 @@ export default {
         </div>
       </div>
       <div v-if="fetched" class="top-right-container">
-        <p v-for="(paragraph, index) in currentQuestion.explanation_paragraphs" :key="index" >{{paragraph}}</p>
+        <p v-for="(paragraph, index) in currentQuestion.explanation_paragraphs" :key="index" v-html="paragraph" ></p>
         <button v-if="!quizFinished" class="rectangular-button" @click="this.next()">Next Question</button>
         <button v-else class="rectangular-button" @click="this.finish()">Finish the Quiz</button>
       </div>
@@ -111,7 +111,6 @@ img {
   color: black;
   font-family: "Poppins";
   font-size: 32px;
-  font-weight: 500;
   width: 50%;
 }
 

@@ -51,7 +51,7 @@ export default {
         </div>
       </div>
       <div v-if="fetched" class="right-container">
-        <p v-for="(paragraph, index) in currentQuestion.explanation_paragraphs" :key="index" >{{paragraph}}</p>
+        <p v-for="(paragraph, index) in currentQuestion.explanation_paragraphs" :key="index" v-html="paragraph" ></p>
         <button class="rectangular-button" @click="this.exit()">Back to Summary</button>
       </div>
     </div>
