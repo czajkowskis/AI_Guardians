@@ -106,7 +106,7 @@ img {
   width: 50%;
   color: black;
   font-family: "Poppins";
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 500;
 }
 
