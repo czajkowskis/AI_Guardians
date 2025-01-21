@@ -160,7 +160,7 @@
   }
 
   img {
-    width: 350px;
+    width: 450px;
     object-fit: contain;
   }
 
