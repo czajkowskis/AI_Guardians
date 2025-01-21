@@ -97,7 +97,7 @@ export default {
 }
 
 img {
-  width: 400px;
+  width: 450px;
 }
 
 .top-right-container {
