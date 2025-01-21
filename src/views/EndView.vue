@@ -137,7 +137,7 @@
   }
 
   .middle-right-container {
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -157,12 +157,12 @@
 
   p {
     font-family: "Poppins";
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 500;
     color: #000;
   }
   img {
-    width: 350px;
+    width: 400px;
   }
 
 
