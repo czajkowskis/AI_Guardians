@@ -102,6 +102,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   text-align: justify;
   width: 50%;
   color: black;
