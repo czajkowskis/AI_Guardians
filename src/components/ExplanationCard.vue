@@ -110,7 +110,7 @@ img {
   padding: 50px;
   color: black;
   font-family: "Poppins";
-  font-size: 32px;
+  font-size: 28px;
   width: 50%;
 }
 
