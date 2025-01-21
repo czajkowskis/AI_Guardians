@@ -114,6 +114,10 @@ img {
   width: 50%;
 }
 
+p {
+  font-size: 28px;
+}
+
 button {
   background: #FFEE8C;
   color: #000;
